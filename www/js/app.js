@@ -99,11 +99,35 @@ angular.module("starter")
       $location.path(targetScreen);
     };
 
-    $http.get('database/bagoaz-export.json').success(function (data) {
-      $rootScope.gaiak = data.gaiak;
-      $rootScope.lexiko = data.lexiko;
-      $rootScope.ariketak = data.ariketak;
+    $http({
+      method: 'GET',
+      url: 'https://raw.githubusercontent.com/litospayaso/bagoaz-ionic/master/www/database/bagoaz-export.json'
+    }).then(function successCallback(data) {
+      $rootScope.gaiak = data.data.gaiak;
+      $rootScope.ariketak = data.data.ariketak;
+      $rootScope.lexiko = data.data.lexiko;
+      localStorage.setItem("databaseCookie", JSON.stringify(data));
+    }, function errorCallback(response) { //Error case not connection available
+      if (JSON.parse(localStorage.getItem("databaseCookie")) != null){
+        var databaseCookie = [];
+        databaseCookie = JSON.parse(localStorage.getItem("databaseCookie"));
+        $rootScope.gaiak = databaseCookie.data.gaiak;
+        $rootScope.lexiko = databaseCookie.data.lexiko;
+        $rootScope.ariketak = databaseCookie.data.ariketak;
+      }else{
+        $http.get('database/bagoaz-export.json').success(function (data) {
+          $rootScope.gaiak = data.gaiak;
+          $rootScope.lexiko = data.lexiko;
+          $rootScope.ariketak = data.ariketak;
+        });
+      }
     });
+
+    // $http.get('database/bagoaz-export.json').success(function (data) {
+    //   $rootScope.gaiak = data.gaiak;
+    //   $rootScope.lexiko = data.lexiko;
+    //   $rootScope.ariketak = data.ariketak;
+    // });
 
     $scope.colorButton = function (index){
       var cookie = [];
