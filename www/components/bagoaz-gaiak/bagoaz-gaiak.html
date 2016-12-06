@@ -1,7 +1,7 @@
 <ion-view view-title="Gaiak" style="margin-left:3px">
   <ion-content>
     <div ng-controller="BagoazGaiak">
-      <div ng-repeat="n in gaiakIndex">
+      <div ng-repeat="n in gaiak">
         <button type="button" ng-class="colorButton(n.maila)" ng-click="moveScreen('app/Ikusi/gaia/'+n.maila)">{{n.izenburu}}</button>
       </div>
     </div>
