@@ -3,17 +3,17 @@
     <div ng-controller="BagoazBaloratzea">
       <div ng-hide="zorionak">
 
-        <!--<div class="row" style="margin-top: 5px;margin-left: 5px">-->
-          <!--<div class="col col-20">-->
-            <!--<a onclick="(this.firstElementChild.paused && this.firstElementChild.currentTime > 0) ? this.firstElementChild.play() : this.firstElementChild.pause();" class="button">-->
-              <!--<audio data-ng-src="{{orainAudioa}}" autoplay></audio>&#9658;-->
-            <!--</a>-->
-          <!--</div>-->
-          <!--<div class="col" style="float: left; margin-top: 15px"><strong>Escucha y escribe</strong></div>-->
-        <!--</div>-->
+        <div class="row" ng-show="orainAudio" style="margin-top: 5px;margin-left: 5px">
+          <div class="col col-20">
+            <a onclick="(this.firstElementChild.paused && this.firstElementChild.currentTime > 0) ? this.firstElementChild.play() : this.firstElementChild.pause();" class="button">
+              <audio data-ng-src="{{orainAudio}}" autoplay></audio>&#9658;
+            </a>
+          </div>
+          <div class="col" style="float: left; margin-top: 15px"><strong>Escucha y escribe</strong></div>
+        </div>
 
         <div>
-          <div class="card">
+          <div class="card" ng-hide="orainAudio">
             <div class="item item-text-wrap">
               {{orainAriketa}}
             </div>

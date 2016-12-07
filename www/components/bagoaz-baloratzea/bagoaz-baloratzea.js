@@ -11,9 +11,13 @@ angular.module("starter")
     ariketak = ariketak.sort(function() {return Math.random() - 0.5}); //unsorting the array.
     var orain = ariketak.pop();
 
-    $scope.orainAriketa = orain.euskara;
-
-    $scope.orainAudioa = "/database/audios/prueba.mp3";
+    if(orain.euskara){
+      $scope.orainAriketa = orain.euskara;
+      $scope.orainAudio = null;
+    }else{
+      $scope.orainAriketa = null;
+      $scope.orainAudio = "/database/audios/"+ orain.audio +".mp3";
+    }
 
     $scope.zuzendu = function(){
       if($scope.erantzun===undefined || $scope.erantzun===null){
@@ -26,7 +30,7 @@ angular.module("starter")
         $scope.barClass = "bar bar-assertive";
         $scope.ebazpen = "Akats:\t" + orain.erantzun;
         ariketak.push(orain);
-        ariketak = ariketak.sort(function() {return Math.random() - 0.5}); //unsorting the array.
+        ariketak = ariketak[0].erantzun === ariketak.sort(function(a,b) {return Math.random() - 0.5})[0].erantzun ? ariketak.sort() : ariketak.sort(function(a,b) {return Math.random() - 0.5}); //unsorting the array.
       }
     };
 
@@ -46,7 +50,14 @@ angular.module("starter")
         return 0;
       }
       orain = ariketak.pop();
-      $scope.orainAriketa = orain.euskara;
+      if(orain.euskara){
+        $scope.orainAriketa = orain.euskara;
+        $scope.orainAudio = null;
+      }else{
+        $scope.orainAriketa = null;
+        $scope.orainAudio = "/database/audios/"+ orain.audio +".mp3";
+      }
+      console.log(ariketak.length,ariketak);
     };
 
     $scope.compareStrings = function (str1, str2) {
