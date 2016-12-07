@@ -57,7 +57,6 @@ angular.module("starter")
         $scope.orainAriketa = null;
         $scope.orainAudio = "/database/audios/"+ orain.audio +".mp3";
       }
-      console.log(ariketak.length,ariketak);
     };
 
     $scope.compareStrings = function (str1, str2) {
