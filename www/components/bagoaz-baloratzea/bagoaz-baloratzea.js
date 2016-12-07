@@ -19,12 +19,12 @@ angular.module("starter")
       if($scope.erantzun===undefined || $scope.erantzun===null){
         return 0;
       }
-      if($scope.compareStrings($scope.erantzun,orain.gaztelania)){//if correct
+      if($scope.compareStrings($scope.erantzun,orain.erantzun)){//if correct
         $scope.barClass = "bar bar-balanced";
         $scope.ebazpen = ["Oso ondo! ","Zuzen! ","Egoki! "].sort(function() {return Math.random() - 0.5}).pop();
       }else{//if mistake
         $scope.barClass = "bar bar-assertive";
-        $scope.ebazpen = "Akats:\t" + orain.gaztelania;
+        $scope.ebazpen = "Akats:\t" + orain.erantzun;
         ariketak.push(orain);
         ariketak = ariketak.sort(function() {return Math.random() - 0.5}); //unsorting the array.
       }
