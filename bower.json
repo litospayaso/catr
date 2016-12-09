@@ -1,27 +1,7 @@
 {
-  "name": "Bagoaz",
-  "version": "1.0.1",
-  "main": "www/index.html",
-  "moduleType": [
-    "globals"
-  ],
-  "keywords": [
-    "angularJS",
-    "cordova"
-  ],
-  "authors": [
-    "Ángel Jesús Hita Barraza <angel.hita.barraza@alumnos.upm.es>"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "www/lib"
-  ],
+  "name": "ionic-tutorial-tabs",
+  "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.3.2"
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.7"
   }
 }
