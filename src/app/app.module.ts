@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+import { SettingsPage } from '../pages/settings/settings';
 import { MediaPage } from '../pages/media/media';
 import { PhasePage } from '../pages/phase/phase';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -17,7 +17,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    SettingsPage,
     MediaPage,
     PhasePage,
     CalendarPage,
@@ -31,7 +31,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    SettingsPage,
     MediaPage,
     PhasePage,
     CalendarPage,

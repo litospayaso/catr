@@ -10,7 +10,6 @@ export class CalendarPage {
   viewTitle: string;
 
   constructor(public navCtrl: NavController) {
-
   }
 
   calendar = {
@@ -45,6 +44,14 @@ export class CalendarPage {
     }
   };
 
+  nextMonth(){
+    document.querySelector('.swiper-container')['swiper']['slideNext']();
+  }
+
+  prevMonth(){
+    document.querySelector('.swiper-container')['swiper']['slidePrev']();
+  }
+
   onViewTitleChanged(title) {
     this.viewTitle = title;
   }
@@ -55,7 +62,6 @@ export class CalendarPage {
 
   changeMode(mode) {
     this.calendar.mode = mode;
-
   }
 
   onTimeSelected(ev) {

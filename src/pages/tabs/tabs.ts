@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
+import { SettingsPage } from '../settings/settings';
 import { MediaPage } from '../media/media';
 import { PhasePage } from '../phase/phase';
 import { CalendarPage } from '../calendar/calendar';
@@ -10,10 +10,10 @@ import { CalendarPage } from '../calendar/calendar';
 })
 export class TabsPage {
 
-  phaseRoot = PhasePage;
-  aboutRoot = AboutPage;
-  mediaRoot = MediaPage;
   calendarRoot = CalendarPage;
+  phaseRoot = PhasePage;
+  settingsRoot = SettingsPage;
+  mediaRoot = MediaPage;
 
   constructor() {
 
