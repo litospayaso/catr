@@ -1,3 +1,31 @@
 page-calendar {
 
 }
+$color1: rgba(133, 255, 158, 1);
+$color2: rgba(95, 75, 182, 1);
+$color3: rgba(164, 145, 211, 1);
+$color4: rgba(157, 117, 203, 1);
+$color5: rgba(133, 71, 152, 1);
+$color6: rgba(190, 33, 177, 1);
+$color7: rgba(221, 158, 234, 1);
+$color8: rgba(237, 207, 249, 1);
+$color9: rgba(255, 120, 219, 1);
+$color10: rgba(233, 68, 174, 1);
+$color11: rgba(105, 51, 147, 1);
+$color12: rgba(76, 87, 140, 1);
+$color13: rgba(52, 118, 134, 1);
+$color14: rgba(24, 155, 127, 1);
+$color15: rgba(0, 187, 122, 1);
+    
+.cell-element {
+    border-radius: 20px;
+    // color:blue;
+    // padding: 8px;
+}
+.monthview-primary-with-event{
+    background-color: white !important;
+}
+
+.monthview-selected{
+    background-color: rgba(133, 255, 158, 100) !important;
+}
