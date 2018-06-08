@@ -168,11 +168,10 @@ export class CalendarPage {
   addNewCycle(data){
     data.date = new Date(data.date)
 
-    var endMenstruation = new Date(data.date);
-    endMenstruation.setDate(endMenstruation.getDate() + data.MenstruationDuration);
+    let endMenstruation = new Date(data.date);
+    endMenstruation.setDate(endMenstruation.getDate() + Number(data.MenstruationDuration));
     endMenstruation = new Date(endMenstruation);
-  
-    console.log("DIOS!",data)
+
     const period={
       title: 'Fase Menstrual',
       startTime: data.date,
