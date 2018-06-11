@@ -18,7 +18,7 @@ $color14: rgba(24, 155, 127, 1);
 $color15: rgba(0, 187, 122, 1);
     
 .cell-element {
-    border-radius: 20px;
+    // border-radius: 20px;
     // color:blue;
     // padding: 8px;
 }
@@ -28,4 +28,11 @@ $color15: rgba(0, 187, 122, 1);
 
 .monthview-selected{
     background-color: rgba(133, 255, 158, 100) !important;
+}
+
+.table td{
+    padding: 8px 0 !important;
+}
+.table td th{
+    border:none !important;
 }
