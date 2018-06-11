@@ -149,13 +149,7 @@ export class CalendarPage {
       ],
       buttons: [
         {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
+          text: 'Añadir',
           handler: data => {
             this.addNewCycle(data);
           }

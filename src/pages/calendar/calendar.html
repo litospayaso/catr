@@ -36,17 +36,13 @@
         {{view.dates[row*7+col].label}}
     </div>
   </ng-template>
+  
+  <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+      HOLI!
+  </ng-template>
 
 
-
-  <!-- <ng-template #monthView let-view="view" let-row="row" let-col="col">
-    <div [ngStyle]="{'background-color': view.dates[row*7+col].events.color}">
-      {{view.dates[row*7+col].label}}
-    </div>
-  </ng-template> -->
-
-
-  <calendar [monthviewDisplayEventTemplate]="monthView" [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+  <calendar [monthviewEventDetailTemplate]="template" [monthviewDisplayEventTemplate]="monthView" [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
     (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
     (onTimeSelected)="onTimeSelected($event)" step="30">
   </calendar>
