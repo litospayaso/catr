@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-    <button ion-button full (click)="loadEvents()">create events</button>    
+  <button ion-button full (click)="loadEvents()">create events</button>
 
   <ion-grid>
     <ion-row>
@@ -33,24 +33,29 @@
       <div [ngStyle]="{'background-color': view.dates[row*7+col].events[0].color}" class="cell-element">{{view.dates[row*7+col].label}}</div>
     </div>
     <div *ngIf="!view.dates[row*7+col].events[0]" class="cell-element">
-        {{view.dates[row*7+col].label}}
+      {{view.dates[row*7+col].label}}
     </div>
   </ng-template>
-  
+
   <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
-      HOLI!
+    <div *ngIf="selectedDate.events.length>0">
+      {{selectedDate.events[0].startTime}} {{selectedDate.events[0].title}}
+    </div>
   </ng-template>
 
 
-  <calendar [monthviewEventDetailTemplate]="template" [monthviewDisplayEventTemplate]="monthView" [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
-    (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
-    (onTimeSelected)="onTimeSelected($event)" step="30">
+  <calendar [monthviewEventDetailTemplate]="template" [monthviewDisplayEventTemplate]="monthView" [eventSource]="eventSource"
+    [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onCurrentDateChanged)="onCurrentDateChanged($event)"
+    (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)"
+    step="30">
   </calendar>
 
 
   <ion-fab right bottom>
-      <button ion-fab color="danger" (click)="showPrompt()"><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
-  
+    <button ion-fab color="danger" (click)="showPrompt()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
 
 </ion-content>
