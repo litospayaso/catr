@@ -4,7 +4,7 @@ import { Storage } from '@ionic/storage';
 
 import { CalculateCycles } from '../../assets/services/calculateCycles'
 
-import { calendarInterface } from './calendarInterface';
+import { calendarInterface, eventInterface } from './calendarInterface';
 
 @Component({
   selector: 'page-calendar',
@@ -13,7 +13,7 @@ import { calendarInterface } from './calendarInterface';
 export class CalendarPage {
 
   viewTitle: string;
-  eventSource;
+  eventSource:eventInterface[];
 
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
@@ -23,8 +23,12 @@ export class CalendarPage {
   ) {
     storage.get('database').then((val) => {
       if (val) {
-        // let response = JSON.parse(val);
-      } else {
+        let events = JSON.parse(val);
+        events.forEach(e => {
+          e.startTime = new Date(e.startTime);
+          e.endTime = new Date(e.endTime);
+        });
+        this.eventSource = events;
       }
     }).catch(e=>console.error(e));
   }
@@ -121,7 +125,7 @@ export class CalendarPage {
         {
           text: 'Añadir',
           handler: data => {
-            this.addNewCycle(data);
+            this.addFirstCycle(data);
           }
         }
       ]
@@ -129,9 +133,9 @@ export class CalendarPage {
     prompt.present();
   }
 
-  addNewCycle(data:calendarInterface){
+  addFirstCycle(data:calendarInterface){
     this.eventSource = this.calculateCycles.calculateCycles(data);
-    console.log(this.eventSource);
+    this.storage.set("database",JSON.stringify(this.eventSource));
   }
 
 }
