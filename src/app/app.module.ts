@@ -11,10 +11,10 @@ import { CalendarPage } from '../pages/calendar/calendar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicStorageModule } from '@ionic/storage';
 
-import {CalculateCycles} from '../assets/services/calculateCycles';
-
-import { NgCalendarModule  } from 'ionic2-calendar';
+import { CalculateCycles } from '../assets/services/calculateCycles';
+import { NgCalendarModule } from 'ionic2-calendar';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   imports: [
     BrowserModule,
     NgCalendarModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +44,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     StatusBar,
     SplashScreen,
     CalculateCycles,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { CalculateCycles } from '../../assets/services/calculateCycles'
 
@@ -17,7 +18,15 @@ export class CalendarPage {
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public calculateCycles: CalculateCycles) {
+    public calculateCycles: CalculateCycles,
+    public storage: Storage
+  ) {
+    storage.get('database').then((val) => {
+      if (val) {
+        // let response = JSON.parse(val);
+      } else {
+      }
+    }).catch(e=>console.error(e));
   }
 
   calendar = {

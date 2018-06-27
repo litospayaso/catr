@@ -8,93 +8,112 @@ export class CalculateCycles {
 
     calculateCycles(data: calendarInterface, cycles: number = 2): eventInterface[] {
         let period = this.calculateMestruation(data);
-        let ovulation = this.calculateOvulation(data);
         let folicular = this.calculateFolicular(data);
         let lutea = this.calculateLutea(data);
-        return [period, ovulation, folicular, lutea];
+        let ovulation = this.calculateOvulation(data);
+        return [...period, ...folicular, ...lutea, ...ovulation];
     }
 
-    calculateOvulation(data: calendarInterface, cycles: number = 2): eventInterface {
-        let ovulation: eventInterface;
+    calculateOvulation(data: calendarInterface, cycles: number = 2): eventInterface[] {
+        let result: eventInterface[] = [];
+        for (let i = 0; i < cycles; i++) {
+            let ovulation: eventInterface;
 
-        data.date = new Date(data.date);
-        let startOvulation = new Date(data.date);
-        startOvulation.setDate(startOvulation.getDate() + (Number(data.cicleDuration) - 16));
-        startOvulation = new Date(startOvulation);
-
-        let endOvulation = new Date(data.date);
-        endOvulation.setDate(endOvulation.getDate() + (Number(data.cicleDuration) - 11));
-        endOvulation = new Date(endOvulation);
-
-        ovulation = {
-            title: 'Fase Ovulatioria',
-            startTime: startOvulation,
-            endTime: endOvulation,
-            allDay: true,
-            color: "pink"
+            data.date = new Date(data.date);
+            let startOvulation = new Date(data.date);
+            startOvulation.setDate(startOvulation.getDate() + (Number(data.cicleDuration) - 16) + (Number(data.cicleDuration) * i));
+            startOvulation = new Date(startOvulation);
+            let endOvulation = new Date(data.date);
+            endOvulation.setDate(endOvulation.getDate() + (Number(data.cicleDuration) - 11) + (Number(data.cicleDuration) * i));
+            endOvulation = new Date(endOvulation);
+            ovulation = {
+                title: 'Fase Ovulatioria',
+                startTime: startOvulation,
+                endTime: endOvulation,
+                allDay: true,
+                color: "pink"
+            }
+            result.push(ovulation);
         }
-        return ovulation;
+        return result;
     }
+
+    calculateFolicular(data: calendarInterface, cycles: number = 2): eventInterface[] {
+        let result: eventInterface[] = [];
+        for (let i = 0; i < cycles; i++) {
+            let folicular: eventInterface;
     
-    calculateFolicular(data: calendarInterface, cycles: number = 2): eventInterface {
-        let folicular: eventInterface;
-
-        data.date = new Date(data.date);
-        let startFolicular = new Date(data.date);
-        startFolicular.setDate(startFolicular.getDate() + Number(data.MenstruationDuration));
-        startFolicular = new Date(startFolicular);
-
-        let endFolicular = new Date(data.date);
-        endFolicular.setDate(endFolicular.getDate() + (Number(data.cicleDuration) - 16));
-        endFolicular = new Date(endFolicular);
-
-        folicular = {
-            title: 'Fase Folicular',
-            startTime: startFolicular,
-            endTime: endFolicular,
-            allDay: true,
-            color: "purple"
+            data.date = new Date(data.date);
+            let startFolicular = new Date(data.date);
+            startFolicular.setDate(startFolicular.getDate() + Number(data.MenstruationDuration) + (Number(data.cicleDuration) * i));
+            startFolicular = new Date(startFolicular);
+    
+            let endFolicular = new Date(data.date);
+            endFolicular.setDate(endFolicular.getDate() + (Number(data.cicleDuration) - 16) + (Number(data.cicleDuration) * i));
+            endFolicular = new Date(endFolicular);
+    
+            folicular = {
+                title: 'Fase Folicular',
+                startTime: startFolicular,
+                endTime: endFolicular,
+                allDay: true,
+                color: "purple"
+            }
+            result.push(folicular);
         }
-        return folicular;
+        return result;
     }
 
-    calculateLutea(data: calendarInterface, cycles: number = 2): eventInterface {
-        let lutea: eventInterface;
-
-        data.date = new Date(data.date);
-        let startLutea = new Date(data.date);
-        startLutea.setDate(startLutea.getDate() + (Number(data.cicleDuration) - 12));
-        startLutea = new Date(startLutea);
-
-        let endLutea = new Date(data.date);
-        endLutea.setDate(endLutea.getDate() + Number(data.cicleDuration));
-        endLutea = new Date(endLutea);
-
-        lutea = {
-            title: 'Fase Lutea',
-            startTime: startLutea,
-            endTime: endLutea,
-            allDay: true,
-            color: "MediumSlateBlue"
+    calculateLutea(data: calendarInterface, cycles: number = 2): eventInterface[] {
+        let result: eventInterface[] = [];
+        for (let i = 0; i < cycles; i++) {
+            let lutea: eventInterface;
+    
+            data.date = new Date(data.date);
+            let startLutea = new Date(data.date);
+            startLutea.setDate(startLutea.getDate() + (Number(data.cicleDuration) - 12) + (Number(data.cicleDuration) * i));
+            startLutea = new Date(startLutea);
+    
+            let endLutea = new Date(data.date);
+            endLutea.setDate(endLutea.getDate() + Number(data.cicleDuration) + (Number(data.cicleDuration) * i));
+            endLutea = new Date(endLutea);
+    
+            lutea = {
+                title: 'Fase Lutea',
+                startTime: startLutea,
+                endTime: endLutea,
+                allDay: true,
+                color: "MediumSlateBlue"
+            }
+            result.push(lutea);
         }
-        return lutea;
+        return result;
     }
 
-    calculateMestruation(data: calendarInterface, cycles: number = 2): eventInterface {
-        let period: eventInterface;
+    calculateMestruation(data: calendarInterface, cycles: number = 2): eventInterface[] {
+        let result: eventInterface[] = [];
+        for (let i = 0; i < cycles; i++) {
+            let period: eventInterface;
+    
+            data.date = new Date(data.date);
 
-        data.date = new Date(data.date);
-        let endMenstruation = new Date(data.date);
-        endMenstruation.setDate(endMenstruation.getDate() + Number(data.MenstruationDuration));
-        endMenstruation = new Date(endMenstruation);
+            let startMenstruation = new Date(data.date);
+            startMenstruation.setDate(startMenstruation.getDate() +  (Number(data.cicleDuration) * i));
+            startMenstruation = new Date(startMenstruation);
 
-        period = {
-            title: 'Fase Menstrual',
-            startTime: data.date,
-            endTime: endMenstruation,
-            allDay: true,
-            color: "red"
+            let endMenstruation = new Date(data.date);
+            endMenstruation.setDate(endMenstruation.getDate() + Number(data.MenstruationDuration) + (Number(data.cicleDuration) * i));
+            endMenstruation = new Date(endMenstruation);
+    
+            period = {
+                title: 'Fase Menstrual',
+                startTime: startMenstruation,
+                endTime: endMenstruation,
+                allDay: true,
+                color: "red"
+            }
+            result.push(period);
         }
-        return period;
+        return result;
     }
 }
